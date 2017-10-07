@@ -1,0 +1,77 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="contactInsert"
+        class="com.salesforce.dataloader.process.ProcessRunner"
+        singleton="false">
+        <description>icrisatcontactInsert job gets the icrisatcontact record from the CSV file 
+            and inserts it into Salesforce.</description>
+        <property name="name" value="contactInsert"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" 
+                    value="F:\Softwares\DataLoader CLI\Log\contactInsert.log"/>
+                <entry key="sfdc.endpoint" value="https://login.salesforce.com"/>
+                <entry key="sfdc.username" value="hrishikesh.upadhye.tth4@absyz.com"/>
+                <!--Password below has been encrypted using key file, 
+                    therefore, it will not work without the key setting: 
+                    process.encryptionKeyFile.
+                    The password is not a valid encrypted value, 
+                    please generate the real value using the encrypt.bat utility -->
+                <entry key="sfdc.password" value="a61e85a3f18572c8411bf145697136ad6b604a29aa9238cb4d4ddd17a72d4497adf91957c9d8ea5b"/>
+                <entry key="process.encryptionKeyFile" 
+                    value="F:\Softwares\DataLoader CLI\Config\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Contact"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile"
+                    value="F:\Softwares\DataLoader CLI\Config\ContactInsert.sdl"/>
+                <entry key="dataAccess.name" 
+                    value="F:\Softwares\DataLoader CLI\Data\contactInsert.csv"/>
+                <entry key="process.outputSuccess" 
+                    value="F:\Softwares\DataLoader CLI\Log\contactInsert_success.csv"/>
+                <entry key="process.outputError" 
+                    value="F:\Softwares\DataLoader CLI\Log\contactInsert_error.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <entry key="process.initialLastRunDate" 
+                    value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+	
+	<bean id="ContactExtract"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+      <description>csvAccountExtract job gets account info from salesforce and saves info into a CSV file."</description>
+        <property name="name" value="ContactExtract"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" 
+                    value="F:\Softwares\DataLoader CLI\Log\contactExtract.log"/>
+                <entry key="sfdc.endpoint" value="https://login.salesforce.com"/>
+                <entry key="sfdc.username" value="hrishikesh.upadhye.tth4@absyz.com"/>
+                <!--Password below has been encrypted using key file, 
+                    therefore, it will not work without the key setting: 
+                    process.encryptionKeyFile.
+                    The password is not a valid encrypted value, 
+                    please generate the real value using the encrypt.bat utility -->
+                <entry key="sfdc.password" value="a61e85a3f18572c8411bf145697136ad6b604a29aa9238cb4d4ddd17a72d4497adf91957c9d8ea5b"/>
+                <entry key="process.encryptionKeyFile" 
+                    value="F:\Softwares\DataLoader CLI\Config\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Contact"/>
+				<entry key="process.operation" value="extract"/>
+                <entry key="sfdc.extractionRequestSize" value="20"/>
+                <entry key="sfdc.extractionSOQL" value="Select Name,Email FROM Contact"/>
+				<entry key="process.mappingFile"
+                    value="F:\Softwares\DataLoader CLI\Config\contactExtract.sdl"/>
+                <entry key="dataAccess.type" value="csvWrite"/>
+                <entry key="dataAccess.name" value="F:\Softwares\DataLoader CLI\Log\contactExport.csv"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
