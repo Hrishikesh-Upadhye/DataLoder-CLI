@@ -10,29 +10,29 @@
             <map>
                 <entry key="sfdc.debugMessages" value="true"/>
                 <entry key="sfdc.debugMessagesFile" 
-                    value="F:\Softwares\DataLoader CLI\Log\contactInsert.log"/>
+                    value="<File_Path>\contactInsert.log"/>
                 <entry key="sfdc.endpoint" value="https://login.salesforce.com"/>
-                <entry key="sfdc.username" value="hrishikesh.upadhye.tth4@absyz.com"/>
+                <entry key="sfdc.username" value="<LOGIN_ID>"/>
                 <!--Password below has been encrypted using key file, 
                     therefore, it will not work without the key setting: 
                     process.encryptionKeyFile.
                     The password is not a valid encrypted value, 
                     please generate the real value using the encrypt.bat utility -->
-                <entry key="sfdc.password" value="a61e85a3f18572c8411bf145697136ad6b604a29aa9238cb4d4ddd17a72d4497adf91957c9d8ea5b"/>
+                <entry key="sfdc.password" value="<genereated_password_in_step_2>"/>
                 <entry key="process.encryptionKeyFile" 
-                    value="F:\Softwares\DataLoader CLI\Config\key.txt"/>
+                    value="<File_path>\key.txt"/>
                 <entry key="sfdc.timeoutSecs" value="600"/>
                 <entry key="sfdc.loadBatchSize" value="200"/>
                 <entry key="sfdc.entity" value="Contact"/>
                 <entry key="process.operation" value="insert"/>
                 <entry key="process.mappingFile"
-                    value="F:\Softwares\DataLoader CLI\Config\ContactInsert.sdl"/>
+                    value="<File_path>\ContactInsert.sdl"/>
                 <entry key="dataAccess.name" 
-                    value="F:\Softwares\DataLoader CLI\Data\contactInsert.csv"/>
+                    value="<File_path>\contactInsert.csv"/>
                 <entry key="process.outputSuccess" 
-                    value="F:\Softwares\DataLoader CLI\Log\contactInsert_success.csv"/>
+                    value="<File_path>\contactInsert_success.csv"/>
                 <entry key="process.outputError" 
-                    value="F:\Softwares\DataLoader CLI\Log\contactInsert_error.csv"/>
+                    value="<File_path>\contactInsert_error.csv"/>
                 <entry key="dataAccess.type" value="csvRead"/>
                 <entry key="process.initialLastRunDate" 
                     value="2005-12-01T00:00:00.000-0800"/>
@@ -49,17 +49,17 @@
             <map>
                 <entry key="sfdc.debugMessages" value="true"/>
                 <entry key="sfdc.debugMessagesFile" 
-                    value="F:\Softwares\DataLoader CLI\Log\contactExtract.log"/>
+                    value="<File_path>\contactExtract.log"/>
                 <entry key="sfdc.endpoint" value="https://login.salesforce.com"/>
-                <entry key="sfdc.username" value="hrishikesh.upadhye.tth4@absyz.com"/>
+                <entry key="sfdc.username" value="<LOGIN_ID>"/>
                 <!--Password below has been encrypted using key file, 
                     therefore, it will not work without the key setting: 
                     process.encryptionKeyFile.
                     The password is not a valid encrypted value, 
                     please generate the real value using the encrypt.bat utility -->
-                <entry key="sfdc.password" value="a61e85a3f18572c8411bf145697136ad6b604a29aa9238cb4d4ddd17a72d4497adf91957c9d8ea5b"/>
+                <entry key="sfdc.password" value="<genereated_password_in_step_2>"/>
                 <entry key="process.encryptionKeyFile" 
-                    value="F:\Softwares\DataLoader CLI\Config\key.txt"/>
+                    value="<File_Path>\key.txt"/>
                 <entry key="sfdc.timeoutSecs" value="600"/>
                 <entry key="sfdc.loadBatchSize" value="200"/>
                 <entry key="sfdc.entity" value="Contact"/>
@@ -67,9 +67,9 @@
                 <entry key="sfdc.extractionRequestSize" value="20"/>
                 <entry key="sfdc.extractionSOQL" value="Select Name,Email FROM Contact"/>
 				<entry key="process.mappingFile"
-                    value="F:\Softwares\DataLoader CLI\Config\contactExtract.sdl"/>
+                    value="<File_Path>\contactExtract.sdl"/>
                 <entry key="dataAccess.type" value="csvWrite"/>
-                <entry key="dataAccess.name" value="F:\Softwares\DataLoader CLI\Log\contactExport.csv"/>
+                <entry key="dataAccess.name" value="<File_Path>\contactExport.csv"/>
             </map>
         </property>
     </bean>
