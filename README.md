@@ -43,7 +43,7 @@ For Example: encrypt.bat —g anystring
  
 5.	To see a list of command-line options for encrypt.bat, type encrypt.bat from the command line.
 
-6.	Copy the generated key from the command window to a text file named key.txt and make a note of the file path. In this example, the generated key is e8a68b73992a7a54.
+6.	Copy the generated key from the command window to a text file named key.txt and make a note of the file path.
 
 #Step Two: Create the Encrypted Password
 
