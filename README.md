@@ -5,33 +5,50 @@ Available in: Enterprise, Performance, Unlimited, Developer, and Database.com Ed
 
 In addition to using Data Loader interactively to import and export data, you can run it from the command line. You can use commands to automate the import and export of data.
 This quick start shows you how to use the Data Loader command-line functionality to import data. Follow these steps.
+
 ●	Step 1: Create the encryption key
+
 ●	Step 2: Create the encrypted password for your login username
+
 ●	Step 3: Create the Field Mapping File
+
 ●	Step 4: Create a process-conf.xml file that contains the import configuration settings
+
 ●	Step 5: Run the process and import the data
+
 Prerequisites
 To step through this quick start requires the following:
+
 ●	Data Loader installed on the computer that runs the command-line process.
+
 ●	The Java Runtime Environment (JRE) installed on the computer that runs the command-line process.
+
 ●	Familiarity with importing and exporting data by using the Data Loader interactively through the user interface. This makes it easier to understand how the command-line functionality works.
 
 #Step One: Create the Encryption Key
 
 When you use Data Loader from the command line, there’s no user interface. Therefore, you provide the information that you would enter in the user interface in a text file named process-conf.xml. For example, you add the username and password that Data Loader uses to log in to Salesforce. The password must be encrypted before you add it to the process-conf.xml file, and creating the key is the first step in that process.
+
 1.	Open a command prompt window by selecting Start | All Programs | Accessories | Command Prompt. Alternatively, you can click Start | Run, enter cmd in the Open field, and click OK.
+
 2.	In the command window, enter cd\ to navigate to the root directory of the drive where Data Loader is installed.
+
 3.	Navigate to the Data Loader \bin directory by entering this command. Be sure to replace the file path with the path from your system.
+
 cd C:\Program Files (x86)\salesforce.com\Apex Data Loader 22.0\bin
+
 4.	Create an encryption key by entering the following command. Replace <seedtext> with any string.
+
 For Example: encrypt.bat —g anystring
  
 5.	To see a list of command-line options for encrypt.bat, type encrypt.bat from the command line.
+
 6.	Copy the generated key from the command window to a text file named key.txt and make a note of the file path. In this example, the generated key is e8a68b73992a7a54.
 
 #Step Two: Create the Encrypted Password
 
 In this step, you create the encrypted password using the key that you generated in the previous step.
+
 1.	In the same command prompt window, enter the following command. Replace <password> with the password that Data Loader uses to log in to Salesforce. Replace <filepath> with the file path to the key.txt file that you created in the previous step.  
 encrypt.bat –e <password> "<filepath>\key.txt"
  
@@ -40,7 +57,9 @@ encrypt.bat –e <password> "<filepath>\key.txt"
 #Step Three: Create the Field Mapping File
 
 In this step, you create a mapping file with an .sdl file extension. In each line of the mapping file, pair a data source with its destination.
+
 1.	Copy the following to a text file and save it with a name of accountInsertMap.sdl. This is a data insert, so the data source is on the left of the equals sign and the destination field is on the right i.e. API name.
+
 #Mapping values
 #Thu May 26 16:19:33 GMT 2011
 Name=Name
@@ -51,17 +70,29 @@ Otherwise you can create .sdl file from Data Loader UI also.
 #Step Four: Create the Configuration File
 
 The process-conf.xml file contains the information that Data Loader needs to process the data. Each <bean> in theprocess-conf.xml file refers to a single process such as an insert, upsert, export, and so on. Therefore, this file can contain multiple processes. In this step, you edit the file to insert accounts into Salesforce.
+
 1.	Make a copy of the process-conf.xml file from the \samples\conf directory. Be sure to maintain a copy of the original because it contains examples of other types of Data Loader processing such as upserts and exports.
+
 2.	Open the file in a text editor, and replace the contents with the following XML:
+
 3.	Modify the following parameters in the process-conf.xml file. For more information about the process configuration parameters, see Data Loader Process Configuration Parameters.
+
 ●	sfdc.endpoint—Enter the URL of the Salesforce instance for your organization; for example, https://yourInstance.salesforce.com/.
+
 ●	sfdc.username—Enter the username Data Loader uses to log in.
+
 ●	sfdc.password—Enter the encrypted password value that you created in step 2.
+
 ●	process.mappingFile—Enter the path and file name of the mapping file.
+
 ●	dataAccess.Name—Enter the path and file name of the data file that contains the accounts that you want to import.
+
 ●	sfdc.debugMessages—Currently set to true for troubleshooting. Set this to false after your import is up and running.
+
 ●	sfdc.debugMessagesFile—Enter the path and file name of the command line log file.
+
 ●	process.outputSuccess—Enter the path and file name of the success log file.
+
 ●	process.outputError—Enter the path and file name of the error log file.
 
 #Step Five: Import the Data
@@ -69,11 +100,17 @@ The process-conf.xml file contains the information that Data Loader needs to pro
 Now that all the pieces are in place, you can run Data Loader from the command line and insert some new accounts.
 1.	Create a file name accountInsert.csv. This is the account data that you import into your organization.
 2.	In the command prompt window, enter the following command:
+
  	process.bat "<file path to process-conf.xml>" <process name>
+ 
 ●	Replace <file path to process-conf.xml> with the path to the directory containing process-conf.xml.
+ 
 ●	Replace <process name> with the process specified in process-conf.xml.
+ 
 Your command should look something like this:
+
 process.bat "C:\DLTest\Command Line\Config" accountInsert
+
 After the process runs, the command prompt window displays success and error messages. You can also check the log files.
 
 #Create Batch File To Schedule Task
