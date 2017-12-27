@@ -52,7 +52,9 @@ In this step, you create the encrypted password using the key that you generated
 1.	In the same command prompt window, enter the following command. Replace "password" with the password that Data Loader uses to log in to Salesforce. Replace "filepath" with the file path to the key.txt file that you created in the previous step.  
 
 encrypt.bat –e password "filepath\key.txt"
+
 OR
+
 encrypt.bat –e SaleforcePassword+SecurityToken "filepath\key.txt"
 
 Manytimes first option gets failed.You can get an error.So, use second option in which you have to concat your Salesforce Password and Security Token.
