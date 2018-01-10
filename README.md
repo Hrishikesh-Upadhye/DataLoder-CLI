@@ -70,8 +70,12 @@ In this step, you create a mapping file with an .sdl file extension. In each lin
 #Mapping values
 #Thu May 26 16:19:33 GMT 2011
 Name=Name
+
 NumberOfEmployees=NumberOfEmployees
+
 Industry=Industry
+
+
 Otherwise you can create .sdl file from Data Loader UI also.
 
 #Step Four: Create the Configuration File
